@@ -7,9 +7,15 @@
 //
 
 #import "ICTListTableViewController.h"
+#import "AFNetworking.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "ICTVehicleTableViewCell.h"
+
+static NSString * const BaseURLString = @"http://redirect.mytaxi.net/car2go/vehicles.json";
+static const int kCellHeightValue = 70.0;
 
 @interface ICTListTableViewController ()
-
+@property NSArray *vehiclesArray;
 @end
 
 @implementation ICTListTableViewController
@@ -26,12 +32,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView registerClass:[ICTVehicleTableViewCell class]
+           forCellReuseIdentifier:ICTVehicleCellReuseIdentifier];
+    [self loadVehicles];
+}
+
+- (void)loadVehicles {
+    __weak __typeof(&*self)weakSelf = self;
+
+    NSURL *url = [NSURL URLWithString:BaseURLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    __block MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tabBarController.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading...";
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *vehiclesToAdd = responseObject[@"placemarks"];
+        [hud hide:YES];
+        [weakSelf refreshDataWithVechicles:vehiclesToAdd];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"Internet connection failed";
+        [hud hide:YES afterDelay:3];
+    }];
+    [operation start];
+}
+
+- (void)refreshDataWithVechicles:(NSArray *)vehiclesArray {
+    _vehiclesArray = vehiclesArray;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,21 +84,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return _vehiclesArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    ICTVehicleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ICTVehicleCellReuseIdentifier forIndexPath:indexPath];
+    if(cell == nil) {
+        cell = [[ICTVehicleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ICTVehicleCellReuseIdentifier];
+    }
+    NSLog(@"%@", _vehiclesArray[indexPath.row][@"name"]);
+    cell.nameLabel.text = _vehiclesArray[indexPath.row][@"name"];
+    cell.addressLabel.text = _vehiclesArray[indexPath.row][@"address"];
+    [cell setExternalCondition:_vehiclesArray[indexPath.row][@"exterior"]];
+    [cell setInternalCondition:_vehiclesArray[indexPath.row][@"interior"]];
+    NSLog(@"%@", cell.nameLabel);
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kCellHeightValue;
+}
 
 /*
 // Override to support conditional editing of the table view.
