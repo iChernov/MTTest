@@ -8,6 +8,7 @@
 
 #import "ICTMapViewController.h"
 #import "ICTListTableViewController.h"
+#import "ICTVehicleAnnotation.h"
 
 @interface ICTMapViewController ()
 @property NSArray *vehiclesToShowArray;
@@ -38,47 +39,47 @@
     _locationManager.delegate = self;
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
     [_locationManager startUpdatingLocation];
+    [self locateUser];
+    
     _vehiclesToShowArray = listViewController.vehiclesArray;
     
     for (NSDictionary *vehicleDictionary in _vehiclesToShowArray) {
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        CLLocationDegrees latitude = [vehicleDictionary[@"coordinates"][1] doubleValue];
-        CLLocationDegrees longitude = [vehicleDictionary[@"coordinates"][0] doubleValue];
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake([vehicleDictionary[@"coordinates"][1] doubleValue], [vehicleDictionary[@"coordinates"][0] doubleValue]);
         
-        point.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-        point.title = vehicleDictionary[@"name"];
-        point.subtitle = vehicleDictionary[@"address"];
+        int carExteriorCode = [vehicleDictionary[@"exterior"] isEqualToString:@"GOOD"] ? 1 : 0;
+        int carInteriorCode = [vehicleDictionary[@"interior"] isEqualToString:@"GOOD"] ? 1 : 0;
+        NSString *carConditionCode = [NSString stringWithFormat:@"%d%d", carExteriorCode, carInteriorCode];
         
-        [self.mapView addAnnotation:point];
+        ICTVehicleAnnotation *annotation = [[ICTVehicleAnnotation alloc] initWithTitle:vehicleDictionary[@"name"]
+                                                                           andSubtitle:vehicleDictionary[@"address"]
+                                                                           andLocation:location
+                                                                     withConditionCode:carConditionCode];
+        [self.mapView addAnnotation:annotation];
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    if ([newLocation distanceFromLocation: oldLocation] > 15) {
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 800, 800);
-        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    }
-}
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+- (void)locateUser {
+    CLLocationCoordinate2D coordinate = [[_locationManager location] coordinate];;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    
-    for (NSDictionary *vehicleDictionary in _vehiclesToShowArray) {
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        CLLocationDegrees latitude = [vehicleDictionary[@"coordinates"][0] doubleValue];
-        CLLocationDegrees longitude = [vehicleDictionary[@"coordinates"][1] doubleValue];
+}
 
-        point.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-        point.title = vehicleDictionary[@"name"];
-        point.subtitle = vehicleDictionary[@"address"];
-        
-        [self.mapView addAnnotation:point];
-    }
+- (IBAction)centerMapOnUserButtonClicked:(id)sender {
+    [self locateUser];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:[ICTVehicleAnnotation class]]) {
+        ICTVehicleAnnotation *carAnnotation = (ICTVehicleAnnotation *)annotation;
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:ICTVehicleAnnotationReuseIdentifier];
+        if (annotationView == nil) {
+            annotationView = carAnnotation.annotationView;
+        } else {
+            annotationView.annotation = carAnnotation;
+        }
+        return annotationView;
+    } else
+        return nil;
 }
 
 
