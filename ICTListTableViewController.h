@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ICTListTableViewController : UITableViewController
-
+@property NSArray *vehiclesArray;
 @end

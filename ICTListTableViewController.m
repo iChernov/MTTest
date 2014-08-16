@@ -15,7 +15,6 @@ static NSString * const BaseURLString = @"http://redirect.mytaxi.net/car2go/vehi
 static const int kCellHeightValue = 70.0;
 
 @interface ICTListTableViewController ()
-@property NSArray *vehiclesArray;
 @end
 
 @implementation ICTListTableViewController
