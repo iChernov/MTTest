@@ -31,6 +31,11 @@ static const int kCellHeightValue = 70.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 50)];
+    footer.backgroundColor = [UIColor clearColor];
+    self.tableView.tableFooterView = footer;
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self.tableView registerClass:[ICTVehicleTableViewCell class]
            forCellReuseIdentifier:ICTVehicleCellReuseIdentifier];
