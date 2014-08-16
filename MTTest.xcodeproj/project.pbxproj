@@ -27,6 +27,10 @@
 		762EED7D199F543900F408BD /* ICTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762EED7C199F543900F408BD /* ICTMapViewController.m */; };
 		762EED84199F5A4F00F408BD /* ICTVehicleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 762EED82199F5A4F00F408BD /* ICTVehicleTableViewCell.m */; };
 		762EED85199F5A4F00F408BD /* ICTVehicleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762EED83199F5A4F00F408BD /* ICTVehicleTableViewCell.xib */; };
+		762EED8E199F6A7300F408BD /* exterior_bad.png in Resources */ = {isa = PBXBuildFile; fileRef = 762EED8A199F6A7300F408BD /* exterior_bad.png */; };
+		762EED91199F6A7300F408BD /* exterior_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 762EED8D199F6A7300F408BD /* exterior_good.png */; };
+		762EED94199F6B8B00F408BD /* interior_good.png in Resources */ = {isa = PBXBuildFile; fileRef = 762EED92199F6B8B00F408BD /* interior_good.png */; };
+		762EED95199F6B8B00F408BD /* interior_bad.png in Resources */ = {isa = PBXBuildFile; fileRef = 762EED93199F6B8B00F408BD /* interior_bad.png */; };
 		DDE175699D4049B2BA44C1C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162A4D5A3B947319D8F2A04 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +74,10 @@
 		762EED81199F5A4F00F408BD /* ICTVehicleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTVehicleTableViewCell.h; sourceTree = "<group>"; };
 		762EED82199F5A4F00F408BD /* ICTVehicleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTVehicleTableViewCell.m; sourceTree = "<group>"; };
 		762EED83199F5A4F00F408BD /* ICTVehicleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICTVehicleTableViewCell.xib; sourceTree = "<group>"; };
+		762EED8A199F6A7300F408BD /* exterior_bad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exterior_bad.png; sourceTree = "<group>"; };
+		762EED8D199F6A7300F408BD /* exterior_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exterior_good.png; sourceTree = "<group>"; };
+		762EED92199F6B8B00F408BD /* interior_good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interior_good.png; sourceTree = "<group>"; };
+		762EED93199F6B8B00F408BD /* interior_bad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interior_bad.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,10 +151,10 @@
 				762EED7B199F543900F408BD /* ICTMapViewController.h */,
 				762EED7C199F543900F408BD /* ICTMapViewController.m */,
 				762EED54199F51D700F408BD /* Images.xcassets */,
-				762EED40199F51D700F408BD /* Supporting Files */,
 				762EED81199F5A4F00F408BD /* ICTVehicleTableViewCell.h */,
 				762EED82199F5A4F00F408BD /* ICTVehicleTableViewCell.m */,
 				762EED83199F5A4F00F408BD /* ICTVehicleTableViewCell.xib */,
+				762EED40199F51D700F408BD /* Supporting Files */,
 			);
 			path = MTTest;
 			sourceTree = "<group>";
@@ -183,6 +191,10 @@
 		762EED71199F529E00F408BD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				762EED8A199F6A7300F408BD /* exterior_bad.png */,
+				762EED8D199F6A7300F408BD /* exterior_good.png */,
+				762EED92199F6B8B00F408BD /* interior_good.png */,
+				762EED93199F6B8B00F408BD /* interior_bad.png */,
 				762EED74199F531B00F408BD /* Map.png */,
 				762EED72199F52A600F408BD /* Map@2x.png */,
 			);
@@ -269,10 +281,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				762EED73199F52A600F408BD /* Map@2x.png in Resources */,
+				762EED95199F6B8B00F408BD /* interior_bad.png in Resources */,
 				762EED85199F5A4F00F408BD /* ICTVehicleTableViewCell.xib in Resources */,
 				762EED55199F51D700F408BD /* Images.xcassets in Resources */,
+				762EED8E199F6A7300F408BD /* exterior_bad.png in Resources */,
+				762EED91199F6A7300F408BD /* exterior_good.png in Resources */,
 				762EED75199F531B00F408BD /* Map.png in Resources */,
 				762EED44199F51D700F408BD /* InfoPlist.strings in Resources */,
+				762EED94199F6B8B00F408BD /* interior_good.png in Resources */,
 				762EED4D199F51D700F408BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,76 +13,66 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AddressLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d5U-lk-9Tb">
-                        <rect key="frame" x="20" y="42" width="280" height="37"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="AddressLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d5U-lk-9Tb">
+                        <rect key="frame" x="20" y="37" width="280" height="42"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="d53-f7-CeD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Marion-Regular" family="Marion" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2g-Mg-9dN">
-                        <rect key="frame" x="20" y="6" width="111" height="28"/>
+                        <rect key="frame" x="20" y="6" width="111" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="111" id="Pm9-32-xSA"/>
+                            <constraint firstAttribute="height" constant="23" id="4yE-i0-wbd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Marion-Bold" family="Marion" pointSize="19"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exterior:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dw-zO-EaT">
-                        <rect key="frame" x="150" y="1" width="111" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interior_bad.png" translatesAutoresizingMaskIntoConstraints="NO" id="dvo-j8-NuG">
+                        <rect key="frame" x="244" y="6" width="60" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interior:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-bz-oSN">
-                        <rect key="frame" x="150" y="19" width="111" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="Bx6-xM-iQq"/>
+                            <constraint firstAttribute="height" constant="28" id="b6P-Un-5V7"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exterior_bad.png" translatesAutoresizingMaskIntoConstraints="NO" id="ErW-QM-oqo">
+                        <rect key="frame" x="176" y="6" width="60" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-fC-MnN">
-                        <rect key="frame" x="150" y="19" width="150" height="2"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </progressView>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-jd-qhV">
-                        <rect key="frame" x="150" y="37" width="150" height="2"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </progressView>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="BMT-UO-CNX"/>
+                            <constraint firstAttribute="height" constant="28" id="emi-2x-08e"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1dw-zO-EaT" firstAttribute="trailing" secondItem="6NB-bz-oSN" secondAttribute="trailing" id="0Rr-yS-839"/>
-                    <constraint firstItem="7F9-jd-qhV" firstAttribute="top" secondItem="1dw-zO-EaT" secondAttribute="bottom" constant="16" id="0YB-yM-7YW"/>
-                    <constraint firstAttribute="trailing" secondItem="1dw-zO-EaT" secondAttribute="trailing" constant="59" id="3Z9-Wf-xPV"/>
-                    <constraint firstItem="d5U-lk-9Tb" firstAttribute="top" secondItem="6NB-bz-oSN" secondAttribute="bottom" constant="3" id="45C-Yn-Hlv"/>
-                    <constraint firstItem="aQN-fC-MnN" firstAttribute="trailing" secondItem="7F9-jd-qhV" secondAttribute="trailing" id="FfA-We-1MC"/>
-                    <constraint firstItem="1dw-zO-EaT" firstAttribute="leading" secondItem="r2g-Mg-9dN" secondAttribute="trailing" constant="19" id="Jeu-3t-Uyo"/>
+                    <constraint firstItem="dvo-j8-NuG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="2GB-6N-BUn"/>
+                    <constraint firstAttribute="trailing" secondItem="dvo-j8-NuG" secondAttribute="trailing" constant="16" id="4y7-j6-HvJ"/>
+                    <constraint firstItem="d5U-lk-9Tb" firstAttribute="top" secondItem="r2g-Mg-9dN" secondAttribute="bottom" constant="8" symbolic="YES" id="9F3-UM-vsE"/>
+                    <constraint firstItem="dvo-j8-NuG" firstAttribute="leading" secondItem="ErW-QM-oqo" secondAttribute="trailing" constant="8" id="BZP-fl-jK8"/>
+                    <constraint firstItem="r2g-Mg-9dN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="CUI-R0-gBf"/>
                     <constraint firstAttribute="bottom" secondItem="d5U-lk-9Tb" secondAttribute="bottom" id="Ms2-UL-F0v"/>
-                    <constraint firstAttribute="trailing" secondItem="aQN-fC-MnN" secondAttribute="trailing" constant="20" symbolic="YES" id="QCe-pp-frF"/>
-                    <constraint firstItem="6NB-bz-oSN" firstAttribute="bottom" secondItem="7F9-jd-qhV" secondAttribute="bottom" id="SDC-fk-7NV"/>
-                    <constraint firstItem="r2g-Mg-9dN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="dk1-KN-Oo3"/>
-                    <constraint firstItem="1dw-zO-EaT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="h3m-70-gNo"/>
-                    <constraint firstItem="r2g-Mg-9dN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="i0F-4B-9No"/>
-                    <constraint firstItem="6NB-bz-oSN" firstAttribute="top" secondItem="aQN-fC-MnN" secondAttribute="top" id="jQ8-F3-tsI"/>
-                    <constraint firstItem="aQN-fC-MnN" firstAttribute="leading" secondItem="6NB-bz-oSN" secondAttribute="leading" id="jc3-TC-22k"/>
-                    <constraint firstItem="1dw-zO-EaT" firstAttribute="bottom" secondItem="aQN-fC-MnN" secondAttribute="bottom" id="mN9-35-Fbk"/>
-                    <constraint firstItem="aQN-fC-MnN" firstAttribute="leading" secondItem="7F9-jd-qhV" secondAttribute="leading" id="mSF-FC-Bmy"/>
-                    <constraint firstItem="d5U-lk-9Tb" firstAttribute="leading" secondItem="r2g-Mg-9dN" secondAttribute="leading" id="rtC-er-ECc"/>
-                    <constraint firstItem="d5U-lk-9Tb" firstAttribute="trailing" secondItem="7F9-jd-qhV" secondAttribute="trailing" id="tzn-bc-uva"/>
-                    <constraint firstItem="aQN-fC-MnN" firstAttribute="centerY" secondItem="r2g-Mg-9dN" secondAttribute="centerY" id="wbA-Ru-kvx"/>
-                    <constraint firstItem="1dw-zO-EaT" firstAttribute="leading" secondItem="aQN-fC-MnN" secondAttribute="leading" id="wzc-7D-CDO"/>
-                    <constraint firstItem="d5U-lk-9Tb" firstAttribute="top" secondItem="r2g-Mg-9dN" secondAttribute="bottom" constant="8" symbolic="YES" id="xmH-aa-LEb"/>
+                    <constraint firstItem="r2g-Mg-9dN" firstAttribute="leading" secondItem="d5U-lk-9Tb" secondAttribute="leading" id="NGg-lv-GyB"/>
+                    <constraint firstItem="r2g-Mg-9dN" firstAttribute="top" secondItem="ErW-QM-oqo" secondAttribute="top" id="TZr-n3-Usi"/>
+                    <constraint firstItem="ErW-QM-oqo" firstAttribute="leading" secondItem="r2g-Mg-9dN" secondAttribute="trailing" constant="45" id="iNA-mm-ZLh"/>
+                    <constraint firstItem="ErW-QM-oqo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="sQw-qi-6wv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addressLabel" destination="d5U-lk-9Tb" id="2aR-Rs-JQh"/>
-                <outlet property="externalConditionProgressView" destination="aQN-fC-MnN" id="jLR-CE-4jQ"/>
-                <outlet property="internalConditionProgressView" destination="7F9-jd-qhV" id="GCC-0a-LxN"/>
+                <outlet property="externalConditionView" destination="ErW-QM-oqo" id="sEP-iI-gI6"/>
+                <outlet property="internalConditionView" destination="dvo-j8-NuG" id="7Py-cm-ITp"/>
                 <outlet property="nameLabel" destination="r2g-Mg-9dN" id="io0-tQ-KK8"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="exterior_bad.png" width="143" height="68"/>
+        <image name="interior_bad.png" width="143" height="68"/>
+    </resources>
 </document>

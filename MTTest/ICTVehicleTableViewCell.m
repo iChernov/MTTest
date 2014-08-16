@@ -12,13 +12,13 @@ NSString *ICTVehicleCellReuseIdentifier = @"ICTVehicleCellReuseIdentifier";
 
 @implementation ICTVehicleTableViewCell
 
-- (void)awakeFromNib
-{
-    
-}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if(self) {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"ICTVehicleTableViewCell" owner:self options:nil];
+        self = nibArray[0];
+    }
     return self;
 }
 
@@ -30,25 +30,19 @@ NSString *ICTVehicleCellReuseIdentifier = @"ICTVehicleCellReuseIdentifier";
 
 - (void)setExternalCondition:(NSString *)conditionDescription {
     if ([conditionDescription isEqualToString:@"GOOD"]) {
-        self.externalConditionProgressView.progress = 0.8;
-    }
-    if ([conditionDescription isEqualToString:@"NORMAL"]) {
-        self.externalConditionProgressView.progress = 0.55;
+        self.externalConditionView.image = [UIImage imageNamed:@"exterior_good"];
     }
     if ([conditionDescription isEqualToString:@"UNACCEPTABLE"]) {
-        self.externalConditionProgressView.progress = 0.25;
+        self.externalConditionView.image = [UIImage imageNamed:@"exterior_bad"];
     }
 }
 
 - (void)setInternalCondition:(NSString *)conditionDescription {
     if ([conditionDescription isEqualToString:@"GOOD"]) {
-        self.internalConditionProgressView.progress = 0.8;
-    }
-    if ([conditionDescription isEqualToString:@"NORMAL"]) {
-        self.internalConditionProgressView.progress = 0.55;
+        self.internalConditionView.image = [UIImage imageNamed:@"interior_good"];
     }
     if ([conditionDescription isEqualToString:@"UNACCEPTABLE"]) {
-        self.internalConditionProgressView.progress = 0.25;
+        self.internalConditionView.image = [UIImage imageNamed:@"interior_bad"];
     }}
 
 @end

@@ -32,6 +32,7 @@ static const int kCellHeightValue = 70.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self.tableView registerClass:[ICTVehicleTableViewCell class]
            forCellReuseIdentifier:ICTVehicleCellReuseIdentifier];
     [self loadVehicles];
@@ -90,16 +91,14 @@ static const int kCellHeightValue = 70.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ICTVehicleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ICTVehicleCellReuseIdentifier forIndexPath:indexPath];
+    ICTVehicleTableViewCell *cell = (ICTVehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ICTVehicleCellReuseIdentifier forIndexPath:indexPath];
     if(cell == nil) {
         cell = [[ICTVehicleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ICTVehicleCellReuseIdentifier];
     }
-    NSLog(@"%@", _vehiclesArray[indexPath.row][@"name"]);
     cell.nameLabel.text = _vehiclesArray[indexPath.row][@"name"];
     cell.addressLabel.text = _vehiclesArray[indexPath.row][@"address"];
     [cell setExternalCondition:_vehiclesArray[indexPath.row][@"exterior"]];
     [cell setInternalCondition:_vehiclesArray[indexPath.row][@"interior"]];
-    NSLog(@"%@", cell.nameLabel);
     return cell;
 }
 
